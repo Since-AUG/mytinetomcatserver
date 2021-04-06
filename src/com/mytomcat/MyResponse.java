@@ -9,6 +9,10 @@ public class MyResponse {
     private StringBuilder responseHeaders;
     private StringBuilder content;
     private BufferedWriter bufferedWriter;
+    private int code;
+    public void setCode(int code){
+        this.code = code;
+    }
     public MyResponse(){
         responseLine = new StringBuilder();
         responseHeaders = new StringBuilder();
@@ -50,6 +54,18 @@ public class MyResponse {
     }
     public void response(int code){
         createResponseLine(code);
+        createResponseHeaders();
+        StringBuilder info = new StringBuilder();
+        info.append(responseLine).append(responseHeaders).append(content);
+        try {
+            bufferedWriter.write(info.toString());
+            bufferedWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void response(){
+        createResponseLine(this.code);
         createResponseHeaders();
         StringBuilder info = new StringBuilder();
         info.append(responseLine).append(responseHeaders).append(content);

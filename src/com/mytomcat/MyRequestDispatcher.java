@@ -24,15 +24,17 @@ public class MyRequestDispatcher implements Runnable {
             if(servlet == null){
                 code = 404;
                 response.write("未找到您要访问的资源");
+                response.response(code);
             }else {
                 try {
                     servlet.service(request, response);
+                    response.response();
                 } catch (Exception e) {
                     code = 500;
                     response.write(e.getMessage());
+                    response.response(code);
                 }
             }
-            response.response(code);
             socket.close();
             inputStream.close();
             outputStream.close();

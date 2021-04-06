@@ -6,6 +6,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
-        <url-pattern>/myservlet</url-pattern>
+        <url-pattern>/mytomcat/myservlet</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -1,6 +1,7 @@
 package com.mytomcat;
 
 
+import com.mytomcat.servlet.DefaultServlet;
 import com.mytomcat.servlet.Servlet;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,6 +20,7 @@ public class WebApp {
         for(MyServletEntity servletEntity:servletEntities){
             servlet.put(servletEntity.getName(),servletEntity.getClazz());
         }
+
         Map<String,String> mapping = new HashMap<>();
         for(MyServletMapping servletMapping:servletMappings){
             List<String> urls = servletMapping.getUrls();
@@ -28,13 +30,18 @@ public class WebApp {
         }
         servletContext = new MyServletContext(servlet,mapping);
     }
+
     public static Servlet getServlet(String urlPattern){
         if(urlPattern == null || urlPattern.equals("")){
             return null;
         }
         String name = servletContext.getServletName(urlPattern);
         if(name == null){
-            return null;
+            if(urlPattern.contains("."))
+                return new DefaultServlet();
+            else {
+                return null;
+            }
         }
         String clazz = servletContext.getServletClass(name);
         try {

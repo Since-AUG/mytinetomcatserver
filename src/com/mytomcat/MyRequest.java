@@ -49,7 +49,7 @@ public class MyRequest {
             }else{
                 url = requestlines[1].trim();
             }
-        }else if(method.equalsIgnoreCase("post")){
+        }else{
             url = requestlines[1].trim();
             parameterLine = requestInfo.substring(requestInfo.lastIndexOf(CRLF)+1).trim();
         }

@@ -1,14 +1,14 @@
-package com.mytomcat;
+package com.mytomcat.servlet;
 
-import org.dom4j.Document;
 import org.dom4j.DocumentException;
-import org.dom4j.io.SAXReader;
+import org.junit.Test;
 
-import java.io.*;
-import java.util.Random;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-public class Test {
-    @org.junit.Test
+public class TestServlet {
+    @Test
     public void testFile() throws IOException, ClassNotFoundException, DocumentException {
         File file = new File("content/demo.html");
         System.out.println(file.exists());
