@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-1.7.2.js"></script>
+    <script type="text/javascript"></script>
+</head>
+<body>
+<form action="http://localhost:8088/myservlet" method="post">
+    用户名:<input type="text" name="username" /><br/>
+    密码:<input type="password" name="password" /><br />
+    登录身份:
+    <input type="checkbox" name="role" value="manager" />管理人员
+    <input type="checkbox" name="role" value="clerk" />普通员工
+    <input type="checkbox" name="role" value="visiter" />游客
+    <br/>
+    <input type="submit" />
+</form>
+</body>
+</html>
